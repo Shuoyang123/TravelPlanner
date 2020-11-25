@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 
 class MyTrip extends Component {
+  state = {
+    attractions: []
+  }
+
    render() {
        return (
            <div>
