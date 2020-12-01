@@ -19,17 +19,20 @@ class Home extends Component {
 
    render() {
        return (
-         <Tabs defaultActiveKey="1">
-            <TabPane tab="Search" key="1">
-              <Search updateCity = {this.updateCity}/>
-            </TabPane>
-            <TabPane tab="My Trip" key="2">
-              <MyTrip startDate = {this.state.startDate} endDate = {this.state.endDate} city = {this.state.city}/>
-            </TabPane>
-            <TabPane tab="History" key="3">
-              <History />
-            </TabPane>
-          </Tabs>
+         <div className = "home">
+           <Tabs defaultActiveKey="1">
+              <TabPane tab="Search" key="1">
+                <Search updateCity = {this.updateCity}/>
+              </TabPane>
+              <TabPane tab="My Trip" key="2">
+                <MyTrip datesList = {this.state.dates} cityName = {this.state.city}/>
+              </TabPane>
+              <TabPane tab="History" key="3">
+                <History />
+              </TabPane>
+            </Tabs>
+         </div>
+
        );
    }
 }

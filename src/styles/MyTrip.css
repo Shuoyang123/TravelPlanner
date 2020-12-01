@@ -1,0 +1,17 @@
+.mytrip {
+   display: flex;
+}
+
+.list {
+  height: 780px;
+}
+
+.left-side {
+    flex: 50%;
+    padding: 20px;
+    width: 850px;
+}
+
+.right-side {
+    flex: 50%;
+}

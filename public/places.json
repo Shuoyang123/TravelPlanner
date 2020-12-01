@@ -1,0 +1,231 @@
+{
+  "html_attributions": [],
+  "next_page_token": "CpQCDwEAAJwdqLU_q4CMC9j-DOFIiwmwpP8ICAF_lHHKpWrNLfYsLS0hubKFTbau5sp7Tc_vC2bftXqZSRfq4uMk34-nE1f3weBRv77ZvsUhQn1MvJCfW6pNFA6zrDP_lPLBQZVrGVePIGhW8g485WnZdAHUyKpr4jjJ6hiOh2R6MxVBTYHyRuy5mDa-NGx4zQXDsHGSejOPH6BmPUoyfb-2MmRo1kcYABkBZRAaXpDmTtoXLmX8GxELbMOOAjEJ8Vzxdk-4GQkzoDYB1YwHBR1JXzxlawX0DdUyaJKjLWGjvt8GOwF8d9KVTF0r528jDCheFjvRgxOGMeYq1IrUx9lBofHH4sAX2plD6BGumN40mdBkDKVMEhC8pyLxL6t51mflBEc_WkF6GhTsH0kHwldrZYDnyUZ78TU9zeiiqg",
+  "results": [{
+      "index": 1,
+      "formatted_address": "8284 Melrose Ave, Los Angeles, CA 90046, USA",
+      "geometry": {
+        "location": {
+          "lat": 34.083527,
+          "lng": -118.370157
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 34.08495787989272,
+            "lng": -118.3688093201073
+          },
+          "southwest": {
+            "lat": 34.08225822010727,
+            "lng": -118.3715089798927
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+      "id": "8529e7504ec45e2f380310882a3bd05fe050d701",
+      "name": "Crossroads Kitchen",
+      "opening_hours": {
+        "open_now": false,
+        "weekday_text": []
+      },
+      "photos": [{
+        "height": 446,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/105056983516844525128/photos\">Crossroads Vegan Restaurant</a>"
+        ],
+        "photo_reference": "CmRaAAAAeNvmtrTLNo95XHaHxur4Lc3CSCbtl8zUk1cbjlFdDSpMupFJ0LXRP7iaqHQeP0N8srb3P9NzwI0jrASIvj7dn-8b0KkmjvgeAmETi9sDAEwQVOui2yIJd5yzzJN3LD_bEhCCaBWZ_g1fJHyzVzz9c18eGhTSCsqJIwmOF_xRWfhPBoFUO86y1A",
+        "width": 720
+      }],
+      "place_id": "ChIJhZy9Gba-woARQLEEpEN46uw",
+      "price_level": 3,
+      "rating": 4.5,
+      "reference": "CmRbAAAAU-AZsWP9B3I6f7bIB2lho68meak73rt_fxdoJug-tXoqRil2guPjWxQmycp2dPFKXZNG5azOwT-rEy9vJtXQf44uVj45j_ohS6ietOXClyyAppqZt_ngGVISdtcNvrFaEhDYSDnUEsrd7GxTol1wHfJ4GhRsQAnur588F9jnXy0S4IYaiaEAQA",
+      "types": [
+        "bar",
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ]
+    },
+    {
+      "index": 2,
+      "formatted_address": "4442, 1769 Hillhurst Ave, Los Angeles, CA 90027, United States",
+      "geometry": {
+        "location": {
+          "lat": 34.1033401,
+          "lng": -118.2875469
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 34.10468952989272,
+            "lng": -118.2861405701073
+          },
+          "southwest": {
+            "lat": 34.10198987010727,
+            "lng": -118.2888402298927
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+      "id": "1401d50571af0bd7fc0267e6a3635bfb3d3dbda2",
+      "name": "Green Leaves Vegan",
+      "opening_hours": {
+        "open_now": false,
+        "weekday_text": []
+      },
+      "photos": [{
+        "height": 3168,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/118194982700766373715/photos\">Carl Afable</a>"
+        ],
+        "photo_reference": "CmRaAAAAz4NOaoeJczV-BFF7HYE-unBeYl8bud0vmkVtYxCv-lKLYo1YnAgcf-Cisr4BQypE9WbaUwm157PYyxLkWkQ1CwVcP7bXtV6QAdNegOXB8QlWAEPR95Q6lm4NQ71B3Vm2EhD2nTXqDhitEm0BrjyRh3JxGhRYCJXLJCF4AWJiBXk5fcdcjylX_g",
+        "width": 4752
+      }],
+      "place_id": "ChIJ2RKN_rHAwoARIGWYxAgzzyQ",
+      "price_level": 1,
+      "rating": 4.5,
+      "reference": "CmRbAAAAtM6n50gnrmJYk2qR_1uslm5ILIFgla8_RVtkm5pLzg9pMV-UcNQ3LzYSc6iM2vm6rbIzSvmjYMvWZ0Qy0AnVyIhb0kYHi1HpNFbYF3aD5cxH2hyHuB9qbn_OY_7vTpWEEhDTEJ002c2Pt-QTBNerb9iOGhRnv28Ti7KlI3gYVtBKG5XKOju9Zg",
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ]
+    },
+    {
+      "index": 3,
+      "formatted_address": "4114 Santa Monica Blvd, Los Angeles, CA 90029, USA",
+      "geometry": {
+        "location": {
+          "lat": 34.0919263,
+          "lng": -118.2820544
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 34.09333132989273,
+            "lng": -118.2807559701073
+          },
+          "southwest": {
+            "lat": 34.09063167010728,
+            "lng": -118.2834556298927
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+      "id": "d358acb483e9bacaf445de016f78473908253696",
+      "name": "Bulan Thai Vegetarian Kitchen",
+      "opening_hours": {
+        "open_now": false,
+        "weekday_text": []
+      },
+      "photos": [{
+        "height": 3024,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/107987703028923546874/photos\">jeromy robert</a>"
+        ],
+        "photo_reference": "CmRaAAAAbjH5vQk8Ese5ppONFAIwbunnNnhcEEkKtRrn5yttTYvxHxjbgbGDXIv7cNSfQMU7wICcox5NT__xnaKwJi-e3zr5230Z4t8TcReOcVoV8Ewjfn5g7AL4AK0gksctR-KqEhD6iw1PbCByU1zD7iD3lxPXGhT5AoSLQ7BHIzymU94-0xSvRMo9yA",
+        "width": 4032
+      }],
+      "place_id": "ChIJAaqI1E7HwoARRCxBLPw048Y",
+      "price_level": 2,
+      "rating": 4.6,
+      "reference": "CmRbAAAAbLDZZu-oOjRmRi7hsQpZELuusRQZEk6lE1YJL5r7pnP3RtWaSLlA_p9uYp0QIalfzXhS0605iRnNsEr_WDhos1HxubW4h0sPKz96GPUKeULOux319b2pYHqQCYwYUmOMEhCEXh-YmfKFafd1EtkAYkB2GhSbxBpYLCWz45RTP0YaWm6eeJecwQ",
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ]
+    },
+    {
+      "index": 4,
+      "formatted_address": "3655 S Grand Ave, Los Angeles, CA 90007, USA",
+      "geometry": {
+        "location": {
+          "lat": 34.017339,
+          "lng": -118.278469
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 34.01859817989273,
+            "lng": -118.2769120701073
+          },
+          "southwest": {
+            "lat": 34.01589852010728,
+            "lng": -118.2796117298927
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+      "id": "da772e983e3e6dbc0cd042042311ab79839d1f28",
+      "name": "Azla Ethiopian Vegan Cuisine",
+      "opening_hours": {
+        "open_now": false,
+        "weekday_text": []
+      },
+      "photos": [{
+        "height": 3024,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/110952242659405432450/photos\">Benjamin Rubin</a>"
+        ],
+        "photo_reference": "CmRaAAAARwfVFSLVUmk_dVkBaY43M8sPng1XdXX7Is882vzG7KcFewp2dMMlYqwKQSGyfAOSWZ3vJrgBUEypUwJESuqoxRneTLjp9W-XcQ4pQByDVabpYbT5r5y006esU3aTeHvIEhDXtTfa4Kh1z_-u4D_BFJT2GhSQDwL9zFfvKbwRuGmmcui08SdiLg",
+        "width": 4032
+      }],
+      "place_id": "ChIJmb4BkgrIwoAR-PS33wrjk_M",
+      "rating": 4.8,
+      "reference": "CmRbAAAA5lMrGEVyK5VhjDMMJZ2tUR0Poo9zQt4wZZBcW46e3CfsYUN0INPZKeeKERZJwkhcogLK-FsKAZI92jncCYN4RZQYqtyiJONx3I6VWIrTXGI9rOt01dSTtBCZEKtag0AcEhBlaMFWX2bnU8gMjCv3Fs1AGhSs8gJhrAa-jQNLRX7pxzIqBJ_HQg",
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ]
+    },
+    {
+      "index": 5,
+      "formatted_address": "4507 S Centinela Ave, Los Angeles, CA 90066, USA",
+      "geometry": {
+        "location": {
+          "lat": 33.9925942,
+          "lng": -118.4232475
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 33.99401072989273,
+            "lng": -118.4218230701073
+          },
+          "southwest": {
+            "lat": 33.99131107010729,
+            "lng": -118.4245227298927
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+      "id": "8f5ac5552a0e53f7ae627916c3d1d48b45030f54",
+      "name": "LA Vegan",
+      "opening_hours": {
+        "open_now": false,
+        "weekday_text": []
+      },
+      "photos": [{
+        "height": 3644,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/108088361466169015751/photos\">Eric Estenzo</a>"
+        ],
+        "photo_reference": "CmRaAAAAdcatw_mFed_48beFNIsyCrjLRenujvkj0YkhN5PX8oJQAr013xQEGat49VQ1GmrvEMRTV8CIeWtBOYSwzIWUrD7kyY1c3sgmx-0y_ecKUIuSlxhlbDtjQeCa3U8SV5yGEhAGwkRlZ2kuFsZ5uBKLh79CGhRKQDVIo1Z_ijdaHPLZqjuRU8mcew",
+        "width": 7012
+      }],
+      "place_id": "ChIJZUzGG266woARXsRdJc2silw",
+      "price_level": 2,
+      "rating": 4.6,
+      "reference": "CmRbAAAAXBx1MbFAy5X5HJqg1yMWtv10pIpp5Qeq2lCD7y7dhJM5B8iHXgysRGXgjsD5eTeKnxuaM26srTPC3Ib7g1TfBAnaIcVVw7K0-JEiuRzs-dBnuj_1ey5A0r3zvXOQpcN0EhB18uIS3_Rj_T61b2Sfo0ecGhSmROJ3Of8T44ckuMzOqKUJsZng8Q",
+      "types": [
+        "restaurant",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ]
+    }
+  ],
+  "status": "OK"
+}
