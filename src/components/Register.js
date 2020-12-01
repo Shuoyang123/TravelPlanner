@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Form, Input, Button, message } from 'antd';
-import { API_ROOT } from '../constant.js';
+import { API_ROOT } from '../const/constant.js';
 import { Link } from "react-router-dom";
 
 class RegistrationForm extends Component {

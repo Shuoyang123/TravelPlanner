@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import GoogleMapReact from 'google-map-react';
 
+import { GOOGLE_MAP_KEY } from "../const/constant";
+
 const Wrapper = styled.main`
   width: 80vh;
   height: 100%;
@@ -13,7 +15,7 @@ const GoogleMap = ({ children, ...props }) => (
     <Wrapper>
         <GoogleMapReact
             bootstrapURLKeys={{
-                key: "AIzaSyBmEEKLoJ7e636pV2SFcLrSzammTvfCFV8",
+                key: GOOGLE_MAP_KEY,
                 language: 'en'
             }}
             {...props}

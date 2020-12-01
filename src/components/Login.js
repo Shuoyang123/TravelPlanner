@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import { Form, Icon, Input, Button, message } from 'antd';
 import { Link } from 'react-router-dom';
-import { API_ROOT } from '../constant';
-import { TOKEN_KEY } from '../constant';
+import { API_ROOT } from '../const/constant';
+import { TOKEN_KEY } from '../const/constant';
 
 class NormalLoginForm extends Component {
    handleSubmit = e => {

@@ -7,7 +7,7 @@ import SearchAttractionButton from './SearchAttractionButton.js'
 import Marker from "./Marker";
 import GoogleMap from "./GoogleMap";
 
-import LOS_ANGELES_CENTER from '../const/la_center';
+import { LOS_ANGELES_CENTER } from '../const/constant';
 
 const styles = require("../styles/GoogleMapStyle.json");
 
