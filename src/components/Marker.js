@@ -51,6 +51,7 @@ const InfoWindow = (props) => {
 // Marker component
 const Marker = ({ show, place }) => {
     const markerStyle = {
+        textAlign: "center",
         border: '1px solid white',
         borderRadius: '25%',
         height: 20,
