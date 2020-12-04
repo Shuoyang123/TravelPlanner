@@ -1,9 +1,5 @@
-.mytrip {
+.my-trip {
    display: flex;
-}
-
-.list {
-  height: 780px;
 }
 
 .left-side {

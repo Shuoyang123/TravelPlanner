@@ -33,7 +33,7 @@ class CurrentAttractionsList extends Component {
                     <Radio.Button value="left">Vertical</Radio.Button>
                 </Radio.Group>
                 <Tabs tabBarExtraContent={operations} defaultActiveKey="1" tabPosition={mode}
-                      style={{height: 220}}>
+                      style={{height: 780}}>
                     {[...Array(dates.length).keys()].map(i => (
                         <TabPane tab={dates[i]} key={i}>
                             <Attraction dayTime={i} attractions={this.state.attractionPlan[i]}/>

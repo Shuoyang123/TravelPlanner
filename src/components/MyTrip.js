@@ -135,7 +135,7 @@ class MyTrip extends Component {
     render(){
         const { isMapVisible } = this.state
         return (
-            <div className="mytrip">
+            <div className="my-trip">
                 <div className="left-side">
                     <CurrentAttractionsList/>
                     <div className="left-bottom-button">
