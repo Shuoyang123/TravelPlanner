@@ -1,0 +1,14 @@
+.search_bar {
+    margin-left: 28px;
+    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+}
+
+.icon {
+    margin-left: 5px;
+}
+
+.attraction_list {
+    margin-top: 30px;
+}

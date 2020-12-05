@@ -11,4 +11,6 @@
 @import "./Home.css";
 @import "./SearchAttractionButton.css";
 @import "./SearchAttractionForm.css";
+@import "./SearchAttractionList.css";
+
 @import "./CurrentAttractionList.css";

@@ -40,8 +40,14 @@ class MyTrip extends Component {
         return list;
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.cityName !== this.props.cityName) {
+            this.search(this.props.cityName);
+        }
+    }
+
     componentDidMount() {
-        // this.search("New York");
+        this.search(this.props.cityName);
     }
 
     search = (place) => {
@@ -145,7 +151,7 @@ class MyTrip extends Component {
                     </div>
                 </div>
                 <div className = "right-side">
-                    { !isMapVisible && <SearchAttractionList/> }
+                    { !isMapVisible && <SearchAttractionList cityName = {this.props.cityName}/> }
                     { isMapVisible && <CurrentPlanMap/>}
                 </div>
               </div>

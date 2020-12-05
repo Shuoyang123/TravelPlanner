@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {Button, DatePicker, Input} from 'antd';
+import {Button, DatePicker} from 'antd';
 import PlacesAutocomplete from 'react-places-autocomplete';
+
 
 
 const {RangePicker} = DatePicker;
@@ -60,7 +61,6 @@ class Search extends Component {
 
         const searchOptions = {
             types: ['(cities)'],
-            componentRestrictions: {country: ""}
         }
 
        return (
@@ -116,8 +116,6 @@ class Search extends Component {
                <div className="search-next-btm">
                    <Button type="primary" onClick={this.searchOnClick}>Next</Button>
                </div>
-
-
 
            </div>
        );
