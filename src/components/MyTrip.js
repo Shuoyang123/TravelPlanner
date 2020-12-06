@@ -16,6 +16,8 @@ class MyTrip extends Component {
           temp.push([]);
         }
         this.state = {
+            lat: "40",
+            lng: "-74",
             responses: [],
             isMapVisible: false,
             attractionsId: [],
@@ -107,6 +109,10 @@ class MyTrip extends Component {
             .then(response => {
                 const location = response.data.candidates[0].geometry.location;
                 // console.log(location);
+                this.setState({
+                  lat: location.lat,
+                  lng: location.lng,
+                })
                 this.searchAround(location.lat, location.lng);
             })
             .catch(error => {
@@ -219,7 +225,8 @@ class MyTrip extends Component {
                     </div>
                 </div>
                 <div className = "right-side">
-                    { !isMapVisible && <SearchAttractionList cityName = {this.props.cityName} addPlan = {this.addToPlan}/> }
+                    { !isMapVisible && <SearchAttractionList lat = {this.state.lat} lng = {this.state.lng}
+                                                              cityName = {this.props.cityName} addPlan = {this.addToPlan}/> }
                     { isMapVisible && <CurrentPlanMap responses = {this.state.responses}/>}
                 </div>
               </div>
