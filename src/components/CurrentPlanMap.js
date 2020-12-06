@@ -1,7 +1,9 @@
 import {Component} from "react";
 import GoogleMap from "./GoogleMap";
-import {LOS_ANGELES_CENTER} from "../const/constant";
 import Marker from "./Marker";
+import axios from 'axios';
+
+import {LOS_ANGELES_CENTER, GOOGLE_SEARCH_KEY} from "../const/constant";
 
 const styles = require("../styles/GoogleMapStyle.json");
 
@@ -33,7 +35,7 @@ const apiIsLoaded = (map, maps, places) => {
         path:
             places.map((place) => (
                 // 0.002 insets to avoid weird line position
-                {lat: place.geometry.location.lat - 0.002, lng: place.geometry.location.lng + 0.002}
+                {lat: place.geometry.location.lat, lng: place.geometry.location.lng}
             )),
         geodesic: true,
         strokeColor: "#21265f",
@@ -57,22 +59,34 @@ class CurrentPlanMap extends Component {
             places: []
         }
     }
+
     componentDidMount() {
-        fetch('places.json')
-            .then((response) => response.json())
-            .then((data) => {
-                data.results.forEach((result) => {
-                    result.show = false; // eslint-disable-line no-param-reassign
-                });
-                this.setState({places: data.results});
-            });
+        const atts = this.props.currentAttractionPlan;
+        var res = []
+        for (var i = 0; i < atts.length; i++) {
+            const proxy = "https://cors-anywhere.herokuapp.com/";
+            const base = "https://maps.googleapis.com/maps/api/place/details/json?";
+            const API_KEY = GOOGLE_SEARCH_KEY;
+            const url = `${base}place_id=${atts[i]}&fields=geometry,name,url,rating&key=${API_KEY}`;
+            const finalUrl = proxy + url;
+
+            axios.get(finalUrl)
+                .then(response => {
+                    console.log("detail response", response.data.result);
+                    res.push(response.data.result);
+                    this.setState({places: res})
+                })
+                .catch(err => {
+                    console.log("err in get detail", err);
+                })
+        }
     }
 
     // onChildClick callback can take two arguments: key and childProps
     onMapChildEventCallBack = (key) => {
         this.setState((state) => {
             const index = state.places.findIndex((e) => e.id === key);
-            state.places[index].show = !state.places[index].show; // eslint-disable-line no-param-reassign
+            // state.places[index].show = !state.places[index].show; // eslint-disable-line no-param-reassign
             return {places: state.places};
         });
     };
@@ -98,14 +112,14 @@ class CurrentPlanMap extends Component {
                 onChildMouseEnter={this.onMapChildEventCallBack}
                 onChildMouseLeave={this.onMapChildEventCallBack}
             >
-                {places.map((place) => (
+                {[...Array(places.length).keys()].map(i => (
                     <Marker
-                        key={place.id}
-                        text={place.index}
-                        lat={place.geometry.location.lat}
-                        lng={place.geometry.location.lng}
-                        show={place.show}
-                        place={place}
+                        key={places[i].id}
+                        index={i + 1}
+                        lat={places[i].geometry.location.lat}
+                        lng={places[i].geometry.location.lng}
+                        show={false}
+                        place={places[i]}
                     />
                 ))}
             </GoogleMap>

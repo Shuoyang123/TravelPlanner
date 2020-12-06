@@ -49,7 +49,7 @@ const InfoWindow = (props) => {
 };
 
 // Marker component
-const Marker = ({ show, place }) => {
+const Marker = ({ show, index, place }) => {
     const markerStyle = {
         textAlign: "center",
         border: '1px solid white',
@@ -67,7 +67,7 @@ const Marker = ({ show, place }) => {
     return (
         <>
             <div style={markerStyle} >
-                { place.index }
+                { index }
             </div>
             {show && <InfoWindow place={place} />}
         </>
@@ -89,6 +89,7 @@ InfoWindow.propTypes = {
 
 Marker.propTypes = {
     show: PropTypes.bool.isRequired,
+    index: PropTypes.number.isRequired,
     place: PropTypes.shape({
         index: PropTypes.number,
         name: PropTypes.string,

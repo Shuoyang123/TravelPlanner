@@ -10,34 +10,73 @@ import CurrentPlanMap from "./CurrentPlanMap";
 class MyTrip extends Component {
     constructor(props) {
         super(props);
+        const dates = ["2020-02-01", "2020-02-02", "2020-02-03", "2020-02-04", "2020-02-05"];
+        var temp = [];
+        for(var i = 0; i < dates.length; i++){
+          temp.push([]);
+        }
         this.state = {
+            lat: "40",
+            lng: "-74",
+            responses: [],
             isMapVisible: false,
-            dates: [],
-            //add from list to plan
-            chosenPlace: []
+            attractionsId: [],
+            attractionsName: [],
+            attractionsDetail: [],
+            attractionPlan: [...temp],    //2d
+            chosenPlace: [],
+            activeTab: "0",
         };
     }
 
-    onChange = e => {
-      console.log(e);
-        const { dataInfo, checked } = e.target;
-        const {chosenPlace} = this.state;
-        const list = this.addOrRemove(dataInfo, checked, chosenPlace);
-        this.setState({ chosenPlace: list })
+    addToPlan = (chosen) => {
+      this.setState({
+        chosenPlace: [...chosen]
+      })
+      const chosenPlace = chosen;
+      const activeTab = this.state.activeTab;
+      // const temp = this.state.attractionPlan;
+      // this.setState({
+      //   attractionPlan:
+      // })
+
+      // for(var i = 0; i < chosenPlace.length; i++){
+      //     this.add(this.state.attractionPlan[activeTab], chosenPlace[i]);
+      // }
+      var temp = [];
+      const dates = ["2020-02-01", "2020-02-02", "2020-02-03", "2020-02-04", "2020-02-05"];
+      for(var i = 0; i < dates.length; i++){
+        // temp.push(chosenPlace);
+        if(i != activeTab){
+          temp.push(this.state.attractionPlan[i])
+        }
+        else{
+          temp.push(chosenPlace);
+        }
+      }
+      this.setState({
+        attractionPlan: [...temp]
+      })
+
+      // this.setState(({ attractionPlan }) => ({ attractionPlan:
+      //       attractionPlan.map((chosenPlace, activeTab) => {
+      //         // warning said I wasn't returning in all cases, so I added this
+      //         return chosenPlace;
+      //       })
+      //   }));
     }
 
-    addOrRemove = (item, status, list) => {
-        const found = list.some( entry => entry.name === item.name);
-        if(status && !found){
-            list.push(item)
-        }
+    add = (atts, place) => {
+      const found = atts.some(entry => entry === place);
+      if(!found){
+        atts.push(place);
+      }
+    }
 
-        if(!status && found){
-            list = list.filter( entry => {
-                return entry.name !== item.name;
-            });
-        }
-        return list;
+    updateActiveTab = (tab) => {
+      this.setState({
+        activeTab: tab
+      })
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -47,7 +86,17 @@ class MyTrip extends Component {
     }
 
     componentDidMount() {
-        this.search(this.props.cityName);
+        // this.search(this.props.cityName);
+        const dates = ["2020-02-01", "2020-02-02", "2020-02-03", "2020-02-04", "2020-02-05"];
+        var temp = [];
+        for(var i = 0; i < dates.length; i++){
+          // console.log(i);
+          temp.push([]);
+        }
+        this.setState({
+          attractionPlan: [...temp]
+        })
+        // this.search("New York")
     }
 
     search = (place) => {
@@ -60,6 +109,10 @@ class MyTrip extends Component {
             .then(response => {
                 const location = response.data.candidates[0].geometry.location;
                 // console.log(location);
+                this.setState({
+                  lat: location.lat,
+                  lng: location.lng,
+                })
                 this.searchAround(location.lat, location.lng);
             })
             .catch(error => {
@@ -102,12 +155,13 @@ class MyTrip extends Component {
       for(var i = 0; i < placeID.length; i++){
          const proxy = "https://cors-anywhere.herokuapp.com/";
          const base = "https://maps.googleapis.com/maps/api/place/details/json?";
-         const API_KEY = "AIzaSyC9yzILpgwBgwf0h4rxnsXh1gNVAe8Jzow";
-         const url = `${base}place_id=${placeID[i]}&fields=name,icon,url,place_id&key=${API_KEY}`;
+         const API_KEY = GOOGLE_SEARCH_KEY;
+         const url = `${base}place_id=${placeID[i]}&fields=name,icon,url,place_id,rating,geometry&key=${API_KEY}`;
          const finalUrl = proxy + url;
 
          axios.get(finalUrl)
               .then(response => {
+                console.log("detail response", response);
                 const each = response.data.result;
                 this.setState({
                     attractionsDetail: [...this.state.attractionsDetail, each],
@@ -120,22 +174,18 @@ class MyTrip extends Component {
 
       }
 
-    updatePlan = (chosenAttraction, chosenDate) => {
-        //update state
-    }
 
-    getRecommendation = () => {
-
-    }
 
     saveCurrentPlan = () => {
 
     }
 
     showOrHideMap = () => {
-        this.setState({
-            isMapVisible: !this.state.isMapVisible
-        })
+      const res = [];
+
+      this.setState({
+          isMapVisible: !this.state.isMapVisible
+      })
     };
 
     render(){
@@ -143,16 +193,19 @@ class MyTrip extends Component {
         return (
             <div className="my-trip">
                 <div className="left-side">
-                    <CurrentAttractionsList/>
+                    <CurrentAttractionsList plan = {this.state.attractionPlan}
+                                            chosenPlace = {this.state.chosenPlace}
+                                            datesList = {this.props.datesList}
+                                            updateKey = {this.updateActiveTab }/>
                     <div className="left-bottom-button">
-                        <Button onClick={this.getRecommendation}> get recommendation </Button>
-                        <Button onClick={this.saveCurrentPlan}> save </Button>
-                        <Button onClick={this.showOrHideMap}> map </Button>
+                        <Button onClick={this.saveCurrentPlan}> Save My Plan </Button>
+                        <Button onClick={this.showOrHideMap}> Show Map </Button>
                     </div>
                 </div>
                 <div className = "right-side">
-                    { !isMapVisible && <SearchAttractionList cityName = {this.props.cityName}/> }
-                    { isMapVisible && <CurrentPlanMap/>}
+                    { !isMapVisible && <SearchAttractionList lat = {this.state.lat} lng = {this.state.lng}
+                                                             cityName = {this.props.cityName} addPlan = {this.addToPlan}/> }
+                    { isMapVisible && <CurrentPlanMap currentAttractionPlan = {this.state.attractionPlan[this.state.activeTab]}/>}
                 </div>
               </div>
             );
