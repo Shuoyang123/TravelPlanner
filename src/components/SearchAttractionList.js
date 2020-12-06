@@ -25,6 +25,7 @@ class SearchAttractionList extends Component {
         super(props);
         this.state = {
             searchText: '',
+            chosenPlace: []
         };
     }
     searchTextOnChange = searchText => {
@@ -36,12 +37,39 @@ class SearchAttractionList extends Component {
         console.log(placeId);
     }
 
+    onChange = e => {
+      console.log(e);
+        const { dataInfo, checked } = e.target;
+        const {chosenPlace} = this.state;
+        const list = this.addOrRemove(dataInfo, checked, chosenPlace);
+        this.setState({ chosenPlace: list })
+    }
+
+    addOrRemove = (item, status, list) => {
+        const found = list.some( entry => entry.name === item.name);
+        if(status && !found){
+            list.push(item)
+        }
+
+        if(!status && found){
+            list = list.filter( entry => {
+                return entry.name !== item.name;
+            });
+        }
+        return list;
+    }
+
+    addToPlan = () => {
+      const chosen = this.state.chosenPlace;
+      this.props.addPlan(chosen.map(entry => {
+        return entry.place_id;
+      }))
+    }
 
     render() {
 
         return (
             <div>
-
                 <div className="search_bar">
 
                     <PlacesAutocomplete
@@ -112,7 +140,7 @@ class SearchAttractionList extends Component {
                 </div>
 
                 <div className="addPlanButton">
-                    <Button type="primary">add to plan</Button>
+                    <Button type="primary" onClick = {this.addToPlan}>add to plan</Button>
                 </div>
             </div>
         )

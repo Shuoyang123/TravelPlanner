@@ -1,4 +1,5 @@
 import React,{Component} from "react";
+import axios from 'axios';
 import { Card } from 'antd';
 import Cupcakes from '../assets/images/Cupcakes.jpg';
 import '../styles/Attraction.css';
@@ -6,37 +7,69 @@ import '../styles/Attraction.css';
 class Attraction extends Component {
     constructor(props) {
         super(props);
-        this.state = { };
+        this.state = {
+          data: []
+        };
     }
+
+    componentDidMount(){
+      const placeid = this.props.placeid;
+      const proxy = "https://cors-anywhere.herokuapp.com/";
+      const base = "https://maps.googleapis.com/maps/api/place/details/json?";
+      const API_KEY = "AIzaSyC9yzILpgwBgwf0h4rxnsXh1gNVAe8Jzow";
+      const url = `${base}place_id=${placeid}&fields=name,photo,formatted_address,formatted_phone_number,website,url,rating&key=${API_KEY}`;
+      const finalUrl = proxy + url;
+
+      axios.get(finalUrl)
+           .then(response => {
+             // console.log("detail response", response);
+             this.setState({
+                 data: response.data.result
+             });
+           })
+           .catch(err => {
+             console.log("err in get detail", err);
+           })
+    }
+
     render() {
+        const data = this.state.data;
         return (
-            <div className="attractionBlock" class="attraction-card-transparent">
+            <div className="attractionBlock attraction-card-transparent">
                 <div className="container-fluid d-flex justify-content-center">
                 <div className="attraction-card-row">
                     <div>
-                        <Card class="attraction-card-layout" title={<div className="card_subHeader" className="attraction-card-subHeader"><h2><span>「 Attraction Title 」</span></h2></div>} extra={<a href="#">More</a>} style={{ width: 600 }}>
-                            <img src={Cupcakes} alt="Cupcakes_Image" class="attraction-card-center"/>
-                            <div class="attraction-card-row">
-                                <div className="addressBlock" class="attraction-card-block-layout">
-                                    <div class="attraction-card-caption-layout">Address: </div>
-                                    <div class="attraction-card-info-layout">4-chōme-2-8 Shibakōen, Minato City, Tokyo 105-0011,
-                                        Japan
+                        <Card className="attraction-card-layout" title={<div className="card_subHeader attraction-card-subHeader"><h2><span>「 {data.name} 」</span></h2></div>} extra={<a href={data.url}>More</a>} style={{ width: 600 }}>
+                            <img src={Cupcakes} alt="Cupcakes_Image" className="attraction-card-center"/>
+                            <div className="attraction-card-row">
+                                <div className="addressBlock attraction-card-block-layout">
+                                    <div className="attraction-card-caption-layout">Address: </div>
+                                    <div className="attraction-card-info-layout">
+                                        {data.formatted_address}
                                     </div>
                                 </div>
+                                {
+                                  data.website &&
+                                  <div className="websiteBlock">
+                                      <div className="attraction-card-caption-layout">Website: </div>
+                                      <div className="attraction-card-info-layout">
+                                          <a href={data.website} target="_blank">
+                                             {data.website}
+                                          </a>
+                                      </div>
+                                  </div>
+                                }
+                                {
+                                  data.formatted_phone_number &&
+                                  <div className="websiteBlock">
+                                      <div className="attraction-card-caption-layout">Phone: </div>
+                                      <div className="attraction-card-info-layout">{data.formatted_phone_number}</div>
+                                  </div>
+                                }
+
                                 <div className="websiteBlock">
-                                    <div class="attraction-card-caption-layout">Website: </div>
-                                    <div class="attraction-card-info-layout">
-                                        <a href="https://www.tokyotower.co.jp/"
-                                           target="_blank">https://www.tokyotower.co.jp/</a>
-                                    </div>
-                                </div>
-                                <div className="websiteBlock">
-                                    <div class="attraction-card-caption-layout">Phone: </div>
-                                    <div class="attraction-card-info-layout">+81 3-3433-5111</div>
-                                </div>
-                                <div className="websiteBlock">
-                                    <div class="attraction-card-caption-layout">Hours: </div>
-                                    <div class="attraction-card-info-layout">Closed (Opens at 9am)</div>
+                                    <div className="attraction-card-caption-layout">Rate: </div>
+                                    <div className="attraction-card-info-layout">{data.rating}</div>
                                 </div>
                             </div>
                         </Card>
@@ -51,5 +84,3 @@ class Attraction extends Component {
 }
 
 export default Attraction;
-
-
