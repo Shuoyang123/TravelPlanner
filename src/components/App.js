@@ -8,8 +8,9 @@ class App extends Component{
   render(){
     return (
         <div className="App">
-          <TopBar />
-          <Main />
+            <style>{'body { background-color: rgba(95, 158, 160, 0.1); }'}</style>
+            <TopBar />
+            <Main />
         </div>
     )
   }

@@ -67,6 +67,7 @@ class RegistrationForm extends Component {
        };
 
        return (
+           <div className="register-layout">
            <Form {...formItemLayout} onSubmit={this.handleSubmit} className="register">
                <Form.Item label="Username" >
                    {
@@ -102,12 +103,13 @@ class RegistrationForm extends Component {
                    })(<Input.Password onBlur={this.handleConfirmBlur} />)}
                </Form.Item>
                <Form.Item {...tailFormItemLayout}>
-                   <Button type="primary" htmlType="submit">
+                   <Button type="primary" htmlType="submit" style={{background: "#dcbc60", borderColor: "white"}} className="register-button">
                        Register
                    </Button>
                    {<p>I already have an account, go back to <Link to="/login">login</Link></p>}
                </Form.Item>
            </Form>
+           </div>
        );
    }
 }

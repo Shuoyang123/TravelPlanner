@@ -3,6 +3,7 @@ import { Form, Icon, Input, Button, message } from 'antd';
 import { Link } from 'react-router-dom';
 import { API_ROOT } from '../const/constant';
 import { TOKEN_KEY } from '../const/constant';
+import '../styles/Login.css';
 
 class NormalLoginForm extends Component {
    handleSubmit = e => {
@@ -17,6 +18,7 @@ class NormalLoginForm extends Component {
    render() {
        const { getFieldDecorator } = this.props.form;
        return (
+           <div className="login-layout">
            <Form onSubmit={this.handleSubmit} className="login-form">
                <Form.Item>
                    {getFieldDecorator('username', {
@@ -40,12 +42,13 @@ class NormalLoginForm extends Component {
                    )}
                </Form.Item>
                <Form.Item>
-                   <Button type="primary" htmlType="submit" className="login-form-button">
+                   <Button type="primary" htmlType="submit" style={{background: "#dcbc60", borderColor: "white"}} className="login-form-button">
                        Log in
                    </Button>
                    Or <Link to="/register">register now!</Link>
                </Form.Item>
            </Form>
+           </div>
        );
    }
 }

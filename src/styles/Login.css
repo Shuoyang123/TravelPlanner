@@ -1,8 +1,30 @@
 .login-form {
    width: 300px;
-   margin: 0 auto;
 }
 
 .login-form-button {
    width: 300px;
+   margin: auto;
 }
+
+.login-layout {
+   margin: 0;
+   position: absolute;
+   top: 43%;
+   left: 49%;
+   -ms-transform: translate(-50%, -50%);
+   transform: translate(-50%, -50%);
+}
+
+/*//Overwrite the Ant-Design class*/
+/*  .ant-btn.ant-btn-primary,*/
+/*:global(.ant-btn-primary) {*/
+/*   background-color: #dcbc60;*/
+/*&:hover {*/
+/*    background-color: skyblue !important;*/
+/*    border-color: yellowgreen !important;*/
+/* }*/
+/*}*/
+
+
+
