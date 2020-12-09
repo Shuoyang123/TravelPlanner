@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
 import {Form, Icon, Input, Button, message} from 'antd';
 import {Link} from 'react-router-dom';
-import {API_ROOT} from '../const/constant';
-import {TOKEN_KEY} from '../const/constant';
 import '../styles/Login.css';
 import axios from 'axios';
-import {Redirect} from 'react-router-dom';
+import {API_SERVER} from "../const/constant";
 
-const API_link = "http://18.191.179.31:9092";
+const instance = axios.create({
+    withCredentials: true,
+    baseURL: API_SERVER
+})
 
 class NormalLoginForm extends Component {
     handleSubmit = e => {
@@ -16,7 +17,7 @@ class NormalLoginForm extends Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
-                axios.post("https://cors-anywhere.herokuapp.com/http://localhost:8080/login", {
+                instance.post("http://localhost:8080/login", {
                     username: values.email,
                     password: values.password,
                 })

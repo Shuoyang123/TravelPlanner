@@ -14,15 +14,18 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { Timeline } from 'antd';
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
+import {message, Timeline} from 'antd';
 
-import {GOOGLE_MAP_KEY} from "../const/constant";
+import {API_SERVER, GOOGLE_MAP_KEY} from "../const/constant";
 import * as Prototypes from "prop-types";
+import axios from "axios";
 
 const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+
+const instance = axios.create({
+    withCredentials: true,
+    baseURL: API_SERVER
+})
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -67,9 +70,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const HistoryCard = (card) => {
+
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
     const [open, setOpen] = React.useState(false);
+    const [itineryDetail, setItineryDetail] = React.useState([{date: "", names: [""]}]);
 
     const handleOpen = () => {
         setOpen(true);
@@ -80,7 +85,26 @@ const HistoryCard = (card) => {
     };
 
     const handleExpandClick = () => {
-        setExpanded(!expanded);
+        if (!expanded) {
+            instance.post("get_attractions", {
+                "itineraryId": card.itineraryId
+            })
+                .then(response => {
+                    // itineryDetail = response.data;
+                    while (itineryDetail.length > 0) {
+                        itineryDetail.pop()
+                    }
+                    setItineryDetail(itineryDetail => itineryDetail.concat(response.data));
+                    setExpanded(true);
+                    message.success('Fetch History Succeed!');
+                })
+                .catch((err) => {
+                    console.error(err);
+                    message.error('Fetch History failed.');
+                });
+        } else {
+            setExpanded(false);
+        }
     };
 
     return (
@@ -96,47 +120,6 @@ const HistoryCard = (card) => {
                         <IconButton aria-label="settings" onClick={handleOpen}>
                             <MoreVertIcon/>
                         </IconButton>
-                        <Modal
-                            aria-labelledby="transition-modal-title"
-                            aria-describedby="transition-modal-description"
-                            className={classes.modal}
-                            open={open}
-                            onClose={handleClose}
-                            closeAfterTransition
-                            BackdropComponent={Backdrop}
-                            BackdropProps={{
-                                timeout: 500,
-                            }}
-                        >
-                            <Fade in={open}>
-                                <div className={classes.paper}>
-                                    <Timeline>
-                                        <Timeline.Item color="green">Create a services site 2015-09-01</Timeline.Item>
-                                        <Timeline.Item color="green">Create a services site 2015-09-01</Timeline.Item>
-                                        <Timeline.Item color="red">
-                                            <p>Solve initial network problems 1</p>
-                                            <p>Solve initial network problems 2</p>
-                                            <p>Solve initial network problems 3 2015-09-01</p>
-                                        </Timeline.Item>
-                                        <Timeline.Item>
-                                            <p>Technical testing 1</p>
-                                            <p>Technical testing 2</p>
-                                            <p>Technical testing 3 2015-09-01</p>
-                                        </Timeline.Item>
-                                        <Timeline.Item color="gray">
-                                            <p>Technical testing 1</p>
-                                            <p>Technical testing 2</p>
-                                            <p>Technical testing 3 2015-09-01</p>
-                                        </Timeline.Item>
-                                        <Timeline.Item color="gray">
-                                            <p>Technical testing 1</p>
-                                            <p>Technical testing 2</p>
-                                            <p>Technical testing 3 2015-09-01</p>
-                                        </Timeline.Item>
-                                    </Timeline>
-                                </div>
-                            </Fade>
-                        </Modal>
                     </>
                 }
                 title={card.title}
@@ -173,28 +156,17 @@ const HistoryCard = (card) => {
             <Collapse in={expanded} timeout="auto" unmountOnExit>
                 <CardContent className={classes.cardContent}>
                     <Timeline>
-                        <Timeline.Item color="green">Create a services site 2015-09-01</Timeline.Item>
-                        <Timeline.Item color="green">Create a services site 2015-09-01</Timeline.Item>
-                        <Timeline.Item color="red">
-                            <p>Solve initial network problems 1</p>
-                            <p>Solve initial network problems 2</p>
-                            <p>Solve initial network problems 3 2015-09-01</p>
-                        </Timeline.Item>
-                        <Timeline.Item>
-                            <p>Technical testing 1</p>
-                            <p>Technical testing 2</p>
-                            <p>Technical testing 3 2015-09-01</p>
-                        </Timeline.Item>
-                        <Timeline.Item color="gray">
-                            <p>Technical testing 1</p>
-                            <p>Technical testing 2</p>
-                            <p>Technical testing 3 2015-09-01</p>
-                        </Timeline.Item>
-                        <Timeline.Item color="gray">
-                            <p>Technical testing 1</p>
-                            <p>Technical testing 2</p>
-                            <p>Technical testing 3 2015-09-01</p>
-                        </Timeline.Item>
+                        <Timeline.Item color="Orange"></Timeline.Item>
+                        {[...Array(itineryDetail.length).keys()].map(i => (
+                            <Timeline.Item color="green">
+                                <p> { itineryDetail[i].date } </p>
+                                {
+                                    itineryDetail[i].names.map( name => (
+                                        <p> { name } </p>
+                                    ))
+                                }
+                            </Timeline.Item>
+                        ))}
                     </Timeline>
                 </CardContent>
             </Collapse>
@@ -205,6 +177,7 @@ const HistoryCard = (card) => {
 HistoryCard.propTypes = {
     index: Prototypes.number.isRequired,
     avatar_background_color: Prototypes.string.isRequired,
+    itineraryId: Prototypes.number.isRequired,
     title: Prototypes.string.isRequired,
     date: Prototypes.string.isRequired,
     center_address: Prototypes.string.isRequired,

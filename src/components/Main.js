@@ -14,7 +14,6 @@ class Main extends Component {
        return this.props.isLoggedIn ? <Home/> : <Redirect to="/login"/>;
    }
 
-
    render() {
        return (
            <div className="main">

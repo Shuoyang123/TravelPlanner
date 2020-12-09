@@ -43,7 +43,7 @@ class SearchAttractionList extends Component {
          const proxy = "https://cors-anywhere.herokuapp.com/";
          const base = "https://maps.googleapis.com/maps/api/place/details/json?";
          const API_KEY = "AIzaSyC9yzILpgwBgwf0h4rxnsXh1gNVAe8Jzow";
-         const url = `${base}place_id=${placeId}&fields=name,icon,url,place_id&key=${API_KEY}`;
+         const url = `${base}place_id=${placeId}&fields=name,icon,url,place_id,geometry,rating&key=${API_KEY}`;
          const finalUrl = proxy + url;
 
          axios.get(finalUrl)
