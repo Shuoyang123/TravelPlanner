@@ -114,7 +114,7 @@ class Search extends Component {
                </div>
 
                <div className="search-next-btm">
-                   <Button type="primary" onClick={this.searchOnClick}>Next</Button>
+                   <Button type="primary" style={{background: "#dcbc60", borderColor: "white", width: "150px"}} onClick={this.searchOnClick}>Next</Button>
                </div>
 
            </div>

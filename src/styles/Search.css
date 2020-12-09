@@ -5,13 +5,15 @@
 }
 
 .search-city {
-
+    padding-top: 27px;
 }
 
 .search-date {
     margin-top: 5px;
+    padding-top: 27px;
 }
 
 .search-next-btm {
     margin-top: 5px;
+    padding-top: 27px;
 }

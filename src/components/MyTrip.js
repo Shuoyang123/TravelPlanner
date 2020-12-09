@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
-import {Button} from 'antd';
+import {Button, message} from 'antd';
 import axios from 'axios';
 import SearchAttractionList from "./SearchAttractionList";
 import CurrentAttractionsList from "./CurrentAttractionsList";
 
 import { GOOGLE_SEARCH_KEY } from '../const/constant';
 import CurrentPlanMap from "./CurrentPlanMap";
+
+const API_link = "http://18.191.179.31:9092";
 
 class MyTrip extends Component {
     constructor(props) {
@@ -177,7 +179,21 @@ class MyTrip extends Component {
 
 
     saveCurrentPlan = () => {
-
+      const curDates = ["2020-02-01", "2020-02-02", "2020-02-03", "2020-02-04", "2020-02-05"];
+      const plans = this.state.attractionPlan;
+      const proxy = "https://cors-anywhere.herokuapp.com/";
+      axios.post("http://localhost:8080/save", {
+        dates: curDates,
+        places: plans
+      })
+      .then(response => {
+        console.log(response);
+        message.success('Save succeed!');
+      })
+      .catch((err) => {
+         console.error(err);
+         message.error('Save failed.');
+     });
     }
 
     showOrHideMap = () => {

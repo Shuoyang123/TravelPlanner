@@ -1,27 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Sansita+Swashed&display=swap');
+
 .App {
- text-align: center;
-    padding: 20px;
+    text-align: center;
+    padding: 25px;
 }
 
 .App-logo {
- animation: App-logo-spin infinite 20s linear;
- pointer-events: none;
- height: 50px;
- float: left;
+    animation: App-logo-spin infinite 20s linear;
+    pointer-events: none;
+    height: 60px;
+    padding-bottom: 10px;
+    float: left;
 }
 
 .App-header {
- background-color: #282c34;
- color: white;
- height: 50px;
+    border-radius: 10px;
+    background-color: #5F9EA0;
+    color: white;
+    height: 60px;
 }
 
 .App-title {
- float: left;
- padding-top: 15px;
- font-weight: bold;
- font-size: 17px;
- color: #61dafb;
+    /*float: left;*/
+    padding-bottom: 7px;
+    font-family: 'Dancing Script', cursive;
+    font-weight: bold;
+    font-size: 40px;
+    color: white;
+    align-content: center;
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    -ms-transform: translate(-50%);
+    transform: translate(-50%);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -41,6 +52,10 @@
 
 .logout {
     float: right;
-    padding-top: 13px;
-    padding-right: 13px;
+    padding-top: 30px;
+    padding-right: 17px;
+    color: white;
+    font-weight: bold;
+    font-family: BlinkMacSystemFont;
 }
+
