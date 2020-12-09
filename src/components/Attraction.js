@@ -39,7 +39,7 @@ class Attraction extends Component {
                 <div className="container-fluid d-flex justify-content-center">
                 <div className="attraction-card-row">
                     <div>
-                        <Card className="attraction-card-layout" title={<div className="card_subHeader attraction-card-subHeader"><h2><span>「 {data.name} 」</span></h2></div>} extra={<a href={data.url}>More</a>} style={{ width: 600 }}>
+                        <Card className="attraction-card-layout" title={<div className="card_subHeader attraction-card-subHeader"><h2><span>「 {data.name} 」</span></h2></div>} extra={<a href={data.url}>More</a>} style={{ width: "85%", paddingTop: "10px", paddingBottom: "4px"}}>
                             <img src={Cupcakes} alt="Cupcakes_Image" className="attraction-card-center"/>
                             <div className="attraction-card-row">
                                 <div className="addressBlock attraction-card-block-layout">
@@ -71,6 +71,7 @@ class Attraction extends Component {
                                     <div className="attraction-card-caption-layout">Rate: </div>
                                     <div className="attraction-card-info-layout">{data.rating}</div>
                                 </div>
+                                <p></p>
                             </div>
                         </Card>
                     </div>

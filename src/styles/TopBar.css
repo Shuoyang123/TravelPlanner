@@ -6,11 +6,11 @@
 }
 
 .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    /*animation: App-logo-spin infinite 20s linear;*/
     pointer-events: none;
-    height: 60px;
-    padding-bottom: 10px;
-    float: left;
+    height: 150px;
+    padding-bottom: 85px;
+    padding-right: 270px;
 }
 
 .App-header {
@@ -35,20 +35,20 @@
     transform: translate(-50%);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-   .App-logo {
-       animation: App-logo-spin infinite 20s linear;
-   }
-}
+/*@media (prefers-reduced-motion: no-preference) {*/
+/*   .App-logo {*/
+/*       animation: App-logo-spin infinite 20s linear;*/
+/*   }*/
+/*}*/
 
-@keyframes App-logo-spin {
-   from {
-       transform: rotate(0deg);
-   }
-   to {
-       transform: rotate(360deg);
-   }
-}
+/*@keyframes App-logo-spin {*/
+/*   from {*/
+/*       transform: rotate(0deg);*/
+/*   }*/
+/*   to {*/
+/*       transform: rotate(360deg);*/
+/*   }*/
+/*}*/
 
 .logout {
     float: right;

@@ -76,7 +76,7 @@ class Search extends Component {
 
                    {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                        <div>
-                           <input
+                           <input style={{border: "3px solid #dcbc60", borderRadius: "5px", height: "35px"}}
                                {...getInputProps({
                                    placeholder: 'Search City ...',
                                    className: 'location-search-input',
@@ -114,7 +114,7 @@ class Search extends Component {
                </div>
 
                <div className="search-next-btm">
-                   <Button type="primary" style={{background: "#dcbc60", borderColor: "white", width: "150px"}} onClick={this.searchOnClick}>Next</Button>
+                   <Button type="primary" style={{background: "#dcbc60", borderColor: "#dcbc60", width: "150px", height: "35px"}} onClick={this.searchOnClick}>Next</Button>
                </div>
 
            </div>

@@ -7,7 +7,7 @@ img {
 }
 
 .attraction-card-layout {
-
+    left: 7%;
 }
 
 .attraction-card-subHeader {
@@ -27,19 +27,20 @@ img {
 
 .attraction-card-caption-layout {
     font-family: "Open Sans";
-    margin-left: 5%;
+    padding-left: 30px;
     display: block;
     float: left;
-    width: 12%;
+    width: 60px;
 }
 
 .attraction-card-info-layout {
     font-family: "Open Sans";
     color: dimgray;
-    margin-left: auto;
-    margin-right: auto;
+    padding-left: 14%;
+    text-align: left;
     word-break: keep-all;
     display: block;
+    overflow: scroll;
 }
 
 .attraction-card-block-layout {

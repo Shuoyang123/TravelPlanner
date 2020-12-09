@@ -6,6 +6,7 @@
     flex: 50%;
     padding: 20px;
     width: 850px;
+    overflow: scroll;
 }
 
 .right-side {
@@ -22,5 +23,13 @@
 }
 
 .left-bottom-button {
-    float: bottom;
+   margin-top: 65px;
+}
+
+.save-my-plan-btn {
+    margin-left: 20px;
+}
+
+.show-map-btn {
+    margin-left: 100px;
 }

@@ -104,7 +104,7 @@ class SearchAttractionList extends Component {
                     >
                         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                             <div>
-                                <input
+                                <input style={{border: "3px solid #dcbc60", borderRadius: "5px", height: "35px"}}
                                     {...getInputProps({
                                         placeholder: 'Search Attractions ...',
                                         className: 'location-search-input',
@@ -161,8 +161,9 @@ class SearchAttractionList extends Component {
                     />
                 </div>
 
+                <div className="divider-flex"></div>
                 <div className="addPlanButton">
-                    <Button type="primary" onClick = {this.addToPlan}>Add to Plan</Button>
+                    <Button type="primary" onClick = {this.addToPlan} style={{background: "#dcbc60", borderColor:"white", color: "white", width: "150px", height: "35px"}} className="add-to-plan-btn">Add to Plan</Button>
                 </div>
             </div>
         )

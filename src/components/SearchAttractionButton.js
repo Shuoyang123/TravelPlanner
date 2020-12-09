@@ -37,7 +37,7 @@ class SearchAttractionButton extends Component {
   render() {
     return (
       <div>
-        <Button type="primary" onClick={this.showModal}>
+        <Button type="primary" onClick={this.showModal} >
           Add attractions
         </Button>
         <Modal
