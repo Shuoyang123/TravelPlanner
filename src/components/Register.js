@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import { Form, Input, Button, message } from 'antd';
-import { API_ROOT } from '../const/constant.js';
 import { Link } from "react-router-dom";
+import axios from 'axios';
+
+const API_link = "http://18.191.179.31:9092";
 
 class RegistrationForm extends Component {
    state = {
@@ -36,6 +38,20 @@ class RegistrationForm extends Component {
        this.props.form.validateFields((err, values) => {
            if (!err) {
                console.log('Received values of form: ', values);
+               axios.post("http://localhost:8080/register", {
+                 email: values.email,
+                 password: values.password,
+                 firstName: values.firstName,
+                 lastName: values.lastName
+               })
+               .then(response => {
+                 console.log(response);
+                 message.success('Registration succeed!');
+               })
+               .catch((err) => {
+                  console.error(err);
+                  message.error('Registration failed.');
+              });
            }
        });
    };
@@ -68,10 +84,24 @@ class RegistrationForm extends Component {
 
        return (
            <Form {...formItemLayout} onSubmit={this.handleSubmit} className="register">
-               <Form.Item label="Username" >
+             <Form.Item label="FirstName" >
+                 {
+                   getFieldDecorator('firstName', {
+                     rules: [{ required: true, message: 'Please input your firstName' }],
+                   })(<Input />)
+                 }
+             </Form.Item>
+             <Form.Item label="LastName" >
+                 {
+                   getFieldDecorator('lastName', {
+                     rules: [{ required: true, message: 'Please input your lastName' }],
+                   })(<Input />)
+                 }
+             </Form.Item>
+               <Form.Item label="Email" >
                    {
-                     getFieldDecorator('username', {
-                       rules: [{ required: true, message: 'Please input your username!' }],
+                     getFieldDecorator('email', {
+                       rules: [{ required: true, message: 'Please input your email!' }],
                      })(<Input />)
                    }
                </Form.Item>

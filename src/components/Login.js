@@ -1,17 +1,33 @@
 import React, {Component} from 'react';
 import { Form, Icon, Input, Button, message } from 'antd';
 import { Link } from 'react-router-dom';
-import { API_ROOT } from '../const/constant';
-import { TOKEN_KEY } from '../const/constant';
+import axios from 'axios';
+import {Redirect } from 'react-router-dom';
+
+const API_link = "http://18.191.179.31:9092";
 
 class NormalLoginForm extends Component {
    handleSubmit = e => {
-       e.preventDefault();
-       this.props.form.validateFields((err, values) => {
-           if (!err) {
-               console.log('Received values of form: ', values);
-           }
-       });
+     const proxy = "https://cors-anywhere.herokuapp.com/";
+     e.preventDefault();
+      this.props.form.validateFields((err, values) => {
+        if (!err) {
+            console.log('Received values of form: ', values);
+            axios.post("http://localhost:8080/register", {
+              email: values.email,
+              password: values.password,
+            })
+            .then(response => {
+              console.log(response);
+              this.props.handleLoginSucceed();
+              message.success('Login succeed!');
+            })
+            .catch((err) => {
+               console.error(err);
+               message.error('Login failed.');
+           });
+        }
+      });
    };
 
    render() {
@@ -19,12 +35,12 @@ class NormalLoginForm extends Component {
        return (
            <Form onSubmit={this.handleSubmit} className="login-form">
                <Form.Item>
-                   {getFieldDecorator('username', {
-                       rules: [{ required: true, message: 'Please input your username!' }],
+                   {getFieldDecorator('email', {
+                       rules: [{ required: true, message: 'Please input your email!' }],
                    })(
                        <Input
                            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                           placeholder="Username"
+                           placeholder="Email"
                        />,
                    )}
                </Form.Item>

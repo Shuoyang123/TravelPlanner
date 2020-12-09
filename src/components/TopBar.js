@@ -9,9 +9,13 @@ class TopBar extends Component {
       <header className="App-header">
          <img src={logo} alt="logo" className="App-logo"/>
          <span className="App-title">Travel Planner</span>
-         <a className="logout" onClick={this.props.handleLogout} >
-             <Icon type="logout"/>{' '}Logout
-         </a>
+           {
+          this.props.isLoggedIn ?
+             <a className="logout" onClick={this.props.handleLogout}>
+                <Icon type="logout"/>{' '}Logout
+              </a>
+            : null
+        }
      </header>
     )
   }
