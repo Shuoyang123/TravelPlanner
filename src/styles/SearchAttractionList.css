@@ -12,3 +12,14 @@
 .attraction_list {
     margin-top: 30px;
 }
+
+.divider-flex {
+    height: 1px;
+    border-top: 1px solid #dcbc60;
+    text-align: center;
+}
+
+.add-to-plan-btn {
+    margin-top: 20px;
+}
+

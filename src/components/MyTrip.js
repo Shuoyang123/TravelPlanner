@@ -3,9 +3,11 @@ import {Button, message} from 'antd';
 import axios from 'axios';
 import SearchAttractionList from "./SearchAttractionList";
 import CurrentAttractionsList from "./CurrentAttractionsList";
-
 import { GOOGLE_SEARCH_KEY } from '../const/constant';
 import CurrentPlanMap from "./CurrentPlanMap";
+import "../styles/MyTrip.css";
+
+const API_link = "http://18.191.179.31:9092";
 
 const API_link = "http://18.191.179.31:9092";
 
@@ -214,8 +216,8 @@ class MyTrip extends Component {
                                             datesList = {this.props.datesList}
                                             updateKey = {this.updateActiveTab }/>
                     <div className="left-bottom-button">
-                        <Button onClick={this.saveCurrentPlan}> Save My Plan </Button>
-                        <Button onClick={this.showOrHideMap}> Show Map </Button>
+                        <Button onClick={this.saveCurrentPlan} style={{background: "#dcbc60", borderColor:"white", color: "white", width: "150px", height: "35px"}} className="save-my-plan-btn"> Save My Plan </Button>
+                        <Button onClick={this.showOrHideMap} style={{background: "#dcbc60", borderColor:"white", color: "white", width: "150px", height: "35px"}} className="show-map-btn"> Show Map </Button>
                     </div>
                 </div>
                 <div className = "right-side">

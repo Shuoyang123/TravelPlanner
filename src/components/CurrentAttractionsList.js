@@ -41,7 +41,7 @@ class CurrentAttractionsList extends Component {
                     <Radio.Button value="left">Vertical</Radio.Button>
                 </Radio.Group>
                 <Tabs defaultActiveKey="0" tabPosition={mode} onChange = {this.changeTab}
-                      style={{height: 780}}>
+                      style={{height: 780}} className="list-layout">
                     {[...Array(dates.length).keys()].map(i => (
                         <TabPane tab={dates[i]} key={i}>
                           {this.props.plan[i].map(p => (<Attraction placeid = {p} key = {p}/>))}
