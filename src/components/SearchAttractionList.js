@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {Avatar, Button, Checkbox, List} from "antd";
 import axios from 'axios';
+import {GOOGLE_SEARCH_KEY, API_SERVER} from '../const/constant';
 import PlacesAutocomplete from 'react-places-autocomplete';
 import {SearchOutlined} from '@material-ui/icons'
 
@@ -23,12 +24,17 @@ const fakePlaceDetail = [{"place_id": "ChIJN0qhSgJZwokRmQJ-MIEQq08","icon":"http
 class SearchAttractionList extends Component {
     constructor(props) {
         super(props);
+        // console.log("id", this.props.attractionsId);
+        // console.log("name", this.props.attractionsName);
+        // console.log("detail", this.props.attractionsDetail);
         this.state = {
+            lat: "",
+            lng: "",
             searchText: '',
             chosenPlace: [],
-            attractionsId: [...fakePlaceId],
-            attractionsName: [...fakePlaceName],
-            attractionsDetail: [...fakePlaceDetail],
+            attractionsId: [],
+            attractionsName: [],
+            attractionsDetail: [],
         };
     }
 
@@ -89,7 +95,89 @@ class SearchAttractionList extends Component {
       }))
     }
 
+    componentDidMount(){
+      this.search(this.props.cityName);
+    }
+
+    search = (place) => {
+        const proxy = "https://cors-anywhere.herokuapp.com/";
+        const base = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?";
+        const API_KEY = GOOGLE_SEARCH_KEY;
+        const url = `${base}input=${place}&inputtype=textquery&fields=geometry&key=${API_KEY}`;
+        const finalUrl = proxy + url;
+        axios.get(finalUrl)
+            .then(response => {
+                const location = response.data.candidates[0].geometry.location;
+                // console.log(location);
+                this.setState({
+                    lat: location.lat,
+                    lng: location.lng,
+                })
+                this.searchAround(location.lat, location.lng);
+            })
+            .catch(error => {
+                console.log("err in fetch data", error);
+            })
+    }
+
+    searchAround = (lat, lng) => {
+        const type = "tourist_attraction";
+        const proxy = "https://cors-anywhere.herokuapp.com/";
+        const base = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?";
+        const API_KEY = GOOGLE_SEARCH_KEY;
+        const url = `${base}location=${lat},${lng}&radius=50000&type=${type}&key=${API_KEY}`;
+        const finalUrl = proxy + url;
+        axios.get(finalUrl)
+            .then(response => {
+                // console.log(response);
+                const attractions = response.data.results;
+                this.updateAroundAttractions(attractions);
+            })
+            .catch(error => {
+                console.log("err in fetch data", error);
+            })
+    }
+
+    updateAroundAttractions = (attractions) => {
+        this.setState({
+            attractionsId: attractions.map((attraction) => {
+                return attraction.place_id;
+            }),
+            attractionsName: attractions.map((attraction) => {
+                return attraction.name;
+            }),
+        });
+        this.updateAttractionsDetail();
+    };
+
+    updateAttractionsDetail = () => {
+        const placeID = this.state.attractionsId;
+        for (var i = 0; i < placeID.length; i++) {
+            const proxy = "https://cors-anywhere.herokuapp.com/";
+            const base = "https://maps.googleapis.com/maps/api/place/details/json?";
+            const API_KEY = GOOGLE_SEARCH_KEY;
+            const url = `${base}place_id=${placeID[i]}&fields=name,icon,url,place_id,rating,geometry&key=${API_KEY}`;
+            const finalUrl = proxy + url;
+
+            axios.get(finalUrl)
+                .then(response => {
+                    console.log("detail response", response);
+                    const each = response.data.result;
+                    this.setState({
+                        attractionsDetail: [...this.state.attractionsDetail, each],
+                    });
+                })
+                .catch(err => {
+                    console.log("err in get detail", err);
+                })
+        }
+
+    }
+
     render() {
+      console.log("id", this.state.attractionsId);
+      console.log("name", this.state.attractionsName);
+      console.log("detail", this.state.attractionsDetail);
         return (
             <div>
                 <div className="search_bar">
