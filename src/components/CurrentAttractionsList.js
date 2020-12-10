@@ -29,11 +29,8 @@ class CurrentAttractionsList extends Component {
 
     render() {
         const {mode} = this.state;
-        // const dates = this.props.datesList;       !!!!!Second
-        const dates = ["2020-02-01", "2020-02-02", "2020-02-03", "2020-02-04", "2020-02-05"];
-        // const operations = <SearchAttractionButton places={this.state.attractionsName}/>
-
-        // {plan[i].length === 0? null : <Attraction />}
+        const dates = this.props.datesList;
+        // const dates = ["2020-02-01", "2020-02-02", "2020-02-03", "2020-02-04", "2020-02-05"];
         return(
             <div className="list">
                 <Radio.Group onChange={this.handleModeChange} value={mode} style={{marginBottom: 10}}>

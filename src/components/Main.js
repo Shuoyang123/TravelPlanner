@@ -20,7 +20,7 @@ class Main extends Component {
              <Switch>
                  <Route path="/register" component={Register}/>
                  <Route path="/login" render={this.getLogin}/>
-                 <Route path="/home" render={this.getHome}/>
+                 <Route path="/home" component={Home}/>
                  <Route render={this.getLogin}/>
              </Switch>
                <img src={Line} alt="CityLine" className="line"/>
